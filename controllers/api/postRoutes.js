@@ -57,22 +57,10 @@ router.put('/:post_id', withAuth, async (req, res) => {
         .json({ message: "You don't have permission to edit this post." })
     }
 
-    const updatedPost = await Post.update(
-      {
-        title: req.body.title,
-        body: req.body.body,
-      },
-      {
-        where: {
-          id: req.params.post_id,
-          user_id: req.session.user_id,
-        },
-      }
-    )
-
-    if (!updatedPost[0]) {
-      return res.status(404).json({ message: 'No post found with this id!' })
-    }
+    await postData.update({
+      title: req.body.title,
+      body: req.body.body,
+    })
 
     res.status(200).json({ message: 'Post updated successfully.' })
   } catch (err) {
@@ -94,12 +82,7 @@ router.delete('/:post_id', withAuth, async (req, res) => {
         .json({ message: "You don't have permission to delete this post." })
     }
 
-    await Post.destroy({
-      where: {
-        id: req.params.post_id,
-        user_id: req.session.user_id,
-      },
-    })
+    await postData.destroy()
 
     res.status(200).json({ message: 'Post deleted successfully.' })
   } catch (err) {
