@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 const { User } = require('../models')
 
 const userData = [
@@ -43,6 +44,18 @@ const userData = [
   },
 ]
 
-const seedUsers = () => User.bulkCreate(userData)
+const seedUsers = async () => {
+  const hashedUserData = await Promise.all(
+    userData.map(async (user) => {
+      const hashedPassword = await bcrypt.hash(user.password, 10)
+      return {
+        name: user.name,
+        password: hashedPassword,
+      }
+    })
+  )
+
+  await User.bulkCreate(hashedUserData)
+}
 
 module.exports = seedUsers
