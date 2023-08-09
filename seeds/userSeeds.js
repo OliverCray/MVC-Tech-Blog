@@ -3,43 +3,43 @@ const { User } = require('../models')
 
 const userData = [
   {
-    name: 'Alice Smith',
+    name: 'alice_smith',
     password: 'SecurePass123',
   },
   {
-    name: 'Bob Johnson',
+    name: 'bob_johnson',
     password: 'StrongPassword456',
   },
   {
-    name: 'Charlie Brown',
+    name: 'charlie_brown',
     password: 'SuperSecret789',
   },
   {
-    name: 'David Lee',
+    name: 'david_lee',
     password: 'Secret123',
   },
   {
-    name: 'Ella Williams',
+    name: 'ella_williams',
     password: 'MyPassword456',
   },
   {
-    name: 'Frank Miller',
+    name: 'frank_miller',
     password: 'Secure789',
   },
   {
-    name: 'Grace Davis',
+    name: 'grace_davis',
     password: 'SecretPass123',
   },
   {
-    name: 'Henry Clark',
+    name: 'henry_clark',
     password: 'Strong123',
   },
   {
-    name: 'Isabella Martinez',
+    name: 'isabella_martinez',
     password: 'Secure456',
   },
   {
-    name: 'Jack Wilson',
+    name: 'jack_wilson',
     password: 'MySecret789',
   },
 ]
