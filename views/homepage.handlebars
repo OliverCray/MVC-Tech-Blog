@@ -11,11 +11,16 @@
     </article>
   {{/each}}
 
-  <div class="pagination flex items-center justify-center mt-4">
-    {{#each pageNumbers}}
-      <a href="?page={{this}}" class="pagination-link{{#if (isCurrentPage this)}} active{{/if}} px-3 py-2 rounded-md text-gray-600 hover:bg-gray-200">{{this}}</a>
-    {{/each}}
-  </div>
+<div class='pagination flex items-center justify-center mt-4'>
+  {{#each pageNumbers}}
+    <a
+      href='?page={{this.pageNumber}}'
+      class='pagination-link px-3 py-2 rounded-md text-gray-600 {{#if (isCurrentPage this.pageNumber this.currentPage)}}bg-blue-500 text-white{{else}}hover:bg-gray-200{{/if}}'
+    >
+      {{this.pageNumber}}
+    </a>
+  {{/each}}
+</div>
 </section>
 
 <script src='/scripts/main.js'></script>
