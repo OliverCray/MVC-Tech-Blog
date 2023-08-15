@@ -593,14 +593,6 @@ video {
   margin-top: 1rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
 .block {
   display: block;
 }
@@ -719,10 +711,6 @@ video {
   text-align: center;
 }
 
-.text-end {
-  text-align: end;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -733,9 +721,9 @@ video {
   line-height: 2.25rem;
 }
 
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
 .text-lg {
@@ -751,6 +739,11 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .font-bold {
@@ -866,6 +859,14 @@ video {
 
   .md\:p-8 {
     padding: 2rem;
+  }
+
+  .md\:p-4 {
+    padding: 1rem;
+  }
+
+  .md\:p-2 {
+    padding: 0.5rem;
   }
 
   .md\:text-left {

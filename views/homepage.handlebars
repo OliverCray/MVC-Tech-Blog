@@ -8,7 +8,10 @@
         >{{post.title}}</a>
       </h2>
       <p class='text-gray-400'>{{post.body}}</p>
-      <p class='text-gray-500'>{{formatDate post.createdAt}}</p>
+      <p class='text-gray-500 flex justify-between'>
+        <span>{{post.user.name}}</span> 
+        <span>{{formatDate post.createdAt}}</span>
+      </p>
     </article>
   {{/each}}
 
