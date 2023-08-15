@@ -5,10 +5,10 @@ const withAuth = require('../utils/auth')
 // GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    const page = req.query.page || 1
+    const currentPage = parseInt(req.query.page) || 1
     const limit = 5
 
-    const offset = limit * (page - 1)
+    const offset = limit * (currentPage - 1)
 
     const postData = await Post.findAll({
       include: [
@@ -34,8 +34,10 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       posts,
       logged_in: req.session.logged_in,
-      pageNumbers,
-      currentPage: parseInt(page),
+      pageNumbers: pageNumbers.map((pageNumber) => ({
+        pageNumber,
+        currentPage,
+      })),
     })
   } catch (err) {
     res.status(500).json(err)
