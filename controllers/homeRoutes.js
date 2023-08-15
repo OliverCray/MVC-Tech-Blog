@@ -75,4 +75,24 @@ router.get('/post/:id', async (req, res) => {
   }
 })
 
+// GET login page
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/')
+    return
+  }
+
+  res.render('login')
+})
+
+// GET signup page
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/')
+    return
+  }
+
+  res.render('signup')
+})
+
 module.exports = router
