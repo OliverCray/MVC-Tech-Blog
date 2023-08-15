@@ -1,0 +1,47 @@
+<div class='max-w-3xl mx-auto p-4'>
+  <div class='bg-gray-800 rounded-lg shadow-md mb-6 p-4'>
+    <h2 class='text-3xl text-white'>{{title}}</h2>
+    <p class='text-gray-400 flex justify-between'>
+      <span>{{user.name}}</span>
+      <span>{{formatDate createdAt}}</span></p>
+  </div>
+
+  <article class='bg-gray-800 rounded-lg shadow-md p-6 mb-6'>
+    <p class='text-xl leading-8 text-white'>{{body}}</p>
+  </article>
+
+  <section class='bg-gray-800 rounded-lg shadow-md p-6 mb-6'>
+    <h2 class='text-2xl font-semibold text-white mb-4'>Comments</h2>
+    {{#if logged_in}}
+      <div class='bg-gray-700 p-4 rounded-lg shadow-md mb-4'>
+        <form onsubmit='return false;'>
+          <input type='hidden' name='post_id' value='{{id}}' />
+          <textarea
+            name='body'
+            id='comment-{{id}}'
+            class='w-full px-4 py-2 rounded bg-gray-600 text-white'
+            rows='4'
+            placeholder='Add your comment...'
+          ></textarea>
+          <button
+            onclick='newCommentHandler({{id}}, event)'
+            class='mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+          >
+            Add Comment
+          </button>
+        </form>
+      </div>
+    {{/if}}
+    {{#each comments as |comment|}}
+      <div class='bg-gray-700 p-4 rounded-lg shadow-md mb-4'>
+        <p class='text-lg text-white pb-3'>{{comment.body}}</p>
+        <p class='text-gray-400 flex justify-between'>
+          <span>{{comment.user.name}}</span>
+          <span>{{formatDate comment.createdAt}}</span>
+        </p>
+      </div>
+    {{/each}}
+  </section>
+</div>
+
+<script src='/scripts/main.js'></script>
