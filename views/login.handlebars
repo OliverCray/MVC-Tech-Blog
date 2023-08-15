@@ -1,0 +1,45 @@
+<form
+  class='max-w-md mx-auto p-6 bg-gray-800 rounded shadow-md signup-form login-form'
+>
+  <h2 class='text-2xl font-semibold mb-4'>Log In</h2>
+  <div class='mb-4'>
+    <label
+      for='username-login'
+      class='block text-sm font-medium'
+    >Username</label>
+    <input
+      type='text'
+      placeholder='Enter your username'
+      required='required'
+      id='username-login'
+      name='username-login'
+      class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200'
+    />
+  </div>
+  <div class='mb-4'>
+    <label
+      for='password-login'
+      class='block text-sm font-medium'
+    >Password</label>
+    <input
+      type='password'
+      placeholder='Enter your password'
+      required='required'
+      id='password-login'
+      name='password-login'
+      class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200'
+    />
+  </div>
+  <button
+    type='submit'
+    class='w-full bg-blue-500 text-gray-200 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+  >
+    Log In
+  </button>
+  <p class='mt-4 text-sm text-gray-300 text-center'>
+    Don't have an account?
+    <a href='/signup' class='text-blue-500'>Sign Up</a>
+  </p>
+</form>
+
+<script src='/scripts/forms.js'></script>
