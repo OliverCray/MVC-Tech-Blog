@@ -4,9 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "dev": "concurrently \"npm:tailwind\" \"npm:nodemon\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./public/styles/main.css --watch",
+    "nodemon": "nodemon server.js",
     "seed": "node seeds/index.js"
   },
   "repository": {
@@ -21,6 +23,7 @@
   },
   "homepage": "https://github.com/OliverCray/MVC-Tech-Blog#readme",
   "devDependencies": {
+    "concurrently": "^8.2.0",
     "nodemon": "^2.0.3",
     "tailwindcss": "^3.3.3"
   },
