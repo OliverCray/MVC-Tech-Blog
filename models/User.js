@@ -19,6 +19,7 @@ User.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     joined_on: {
       type: DataTypes.DATE,
