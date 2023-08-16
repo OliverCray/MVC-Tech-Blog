@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
       ],
       limit: limit,
       offset: offset,
+      order: [['createdAt', 'DESC']],
     })
 
     const posts = postData.map((post) => post.get({ plain: true }))
@@ -94,8 +95,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
           ],
         },
       ],
-      order: [[Post, 'createdAt', 'DESC']],
-      order: [[Comment, 'createdAt', 'DESC']],
+      order: [
+        [Post, 'createdAt', 'DESC'],
+        [Comment, 'createdAt', 'DESC'],
+      ],
     })
 
     const user = userData.get({ plain: true })
