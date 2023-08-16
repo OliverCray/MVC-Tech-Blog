@@ -12,16 +12,24 @@
     <label for='post-body' class='block text-gray-300'>Body</label>
     <textarea
       id='post-body'
-      class='w-full rounded-md p-2 bg-gray-800 text-white'
+      class='w-full rounded-md p-2 bg-gray-800 text-gray-100'
       placeholder='Write the content of your post here'
       rows='5'
       cols='50'
     ></textarea>
   </div>
-  <button
-    id='submit-post-button'
-    class='bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600'
-  >
-    Create Post
-  </button>
+  <div class='flex justify-between'>
+    <button
+      id='submit-post-button'
+      class='bg-blue-500 text-gray-100 px-4 py-2 rounded-md shadow-md hover:bg-blue-600'
+    >
+      Create Post
+    </button>
+    <button
+      id='close-form-button'
+      class='bg-blue-500 text-gray-100 px-4 py-2 rounded-md shadow-md hover:bg-blue-600'
+    >
+      Close
+    </button>
+  </div>
 </form>
