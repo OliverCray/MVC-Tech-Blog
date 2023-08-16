@@ -81,16 +81,26 @@ const newPostHandler = async (event) => {
   }
 }
 
-const newPostButton = document.querySelector('#new-post-button')
-const newPostForm = document.querySelector('#new-post-form')
-const submitPostButton = document.querySelector('#submit-post-button')
+if (document.URL.indexOf('dashboard') !== -1) {
+  const newPostButton = document.querySelector('#new-post-button')
+  const newPostForm = document.querySelector('#new-post-form')
+  const closeFormButton = document.querySelector('#close-form-button')
+  const submitPostButton = document.querySelector('#submit-post-button')
 
-newPostButton.addEventListener('click', () => {
-  newPostForm.classList.toggle('hidden')
-  newPostButton.classList.toggle('hidden')
-})
+  newPostButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    newPostForm.classList.toggle('hidden')
+    newPostButton.classList.toggle('hidden')
+  })
 
-submitPostButton.addEventListener('click', newPostHandler)
+  submitPostButton.addEventListener('click', newPostHandler)
+
+  closeFormButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    newPostForm.classList.toggle('hidden')
+    newPostButton.classList.toggle('hidden')
+  })
+}
 
 document
   .querySelector('#logout-button')
