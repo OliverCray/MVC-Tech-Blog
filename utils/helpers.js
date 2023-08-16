@@ -6,10 +6,8 @@ const isCurrentPage = (pageNumber, currentPage) => {
   return pageNumber === currentPage
 }
 
-const isCommentAuthor = (userId, commentUserId) => {
-  console.log('User ID:', userId)
-  console.log('Comment User ID:', commentUserId)
-  return userId === commentUserId
+const isAuthor = (sessionId, authorId) => {
+  return sessionId === authorId
 }
 
-module.exports = { formatDate, isCurrentPage, isCommentAuthor }
+module.exports = { formatDate, isCurrentPage, isAuthor }

@@ -81,9 +81,9 @@ const newPostHandler = async (event) => {
   }
 }
 
-function toggleCommentMenu(event) {
-  const commentMenu = event.target.nextElementSibling
-  commentMenu.classList.toggle('hidden')
+const toggleMenu = (event) => {
+  const menu = event.target.nextElementSibling
+  menu.classList.toggle('hidden')
 }
 
 if (document.URL.indexOf('dashboard') !== -1) {
