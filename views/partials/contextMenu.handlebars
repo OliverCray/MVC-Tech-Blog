@@ -1,12 +1,19 @@
 <button
   onclick='toggleMenu(event)'
-  class='absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 bg-gray-600 text-gray-200 rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-700'
+  class='absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 bg-gray-600 text-gray-200 rounded-full w-8 h-8 shadow-md flex items-center justify-center hover:bg-gray-700'
 >:</button>
 <div
-  class='{{context}}-menu hidden absolute top-2 right-2 mt-2 -mr-2 bg-gray-700 rounded-lg shadow-md py-2 px-4 text-gray-200 z-10'
+  class='{{context}}-menu hidden absolute top-2 right-4 mt-2 -mr-2 bg-gray-700 rounded-lg shadow-md py-2 px-4 text-gray-200 z-10'
 >
-  <button class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'>Edit
+  <button
+    class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'
+    id='edit-{{context}}-button'
+  >Edit
     {{context}}</button>
-  <button class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'>Delete
+  <button
+    class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'
+    id='delete-{{context}}-button'
+    onClick='{{deleteHandler}}({{id}})'
+  >Delete
     {{context}}</button>
 </div>

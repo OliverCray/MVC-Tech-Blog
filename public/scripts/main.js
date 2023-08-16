@@ -86,6 +86,50 @@ const toggleMenu = (event) => {
   menu.classList.toggle('hidden')
 }
 
+const deleteItem = async (url, id, successRedirect) => {
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
+      console.log(data.message)
+      if (successRedirect) {
+        document.location.replace(successRedirect)
+      }
+    } else {
+      console.error('Error deleting:', data.message)
+    }
+  } catch (error) {
+    console.error('Error deleting:', error)
+  }
+}
+
+const deleteHandler = (id, confirmMessage, url, successRedirect) => {
+  if (confirm(confirmMessage)) {
+    deleteItem(url, id, successRedirect)
+  }
+}
+
+const deletePostHandler = (postId) => {
+  const confirmMessage = 'Are you sure you want to delete this post?'
+  const url = `/api/posts/${postId}`
+  const successRedirect = '/dashboard'
+  deleteHandler(postId, confirmMessage, url, successRedirect)
+}
+
+const deleteCommentHandler = (commentId) => {
+  const confirmMessage = 'Are you sure you want to delete this comment?'
+  const url = `/api/comments/${commentId}`
+  const successRedirect = document.URL
+  deleteHandler(commentId, confirmMessage, url, successRedirect)
+}
+
 if (document.URL.indexOf('dashboard') !== -1) {
   const newPostButton = document.querySelector('#new-post-button')
   const newPostForm = document.querySelector('#new-post-form')

@@ -11,7 +11,7 @@
       <span>{{formatDate createdAt}}</span>
     </p>     
       {{#if (isAuthor session_id user_id)}}
-        {{>contextMenu context="post"}}
+        {{>contextMenu context="post" id=id deleteHandler="deletePostHandler"}}
       {{/if}}    
   </div>
 
@@ -45,7 +45,7 @@
           <span>{{formatDate comment.createdAt}}</span>
         </p>
         {{#if (isAuthor ../session_id comment.user_id)}}
-          {{>contextMenu context="comment"}}
+          {{>contextMenu context="comment" id=comment.id deleteHandler="deleteCommentHandler"}}
         {{/if}}
       </div>
     {{/each}}
