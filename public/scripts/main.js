@@ -81,6 +81,11 @@ const newPostHandler = async (event) => {
   }
 }
 
+function toggleCommentMenu(event) {
+  const commentMenu = event.target.nextElementSibling
+  commentMenu.classList.toggle('hidden')
+}
+
 if (document.URL.indexOf('dashboard') !== -1) {
   const newPostButton = document.querySelector('#new-post-button')
   const newPostForm = document.querySelector('#new-post-form')
