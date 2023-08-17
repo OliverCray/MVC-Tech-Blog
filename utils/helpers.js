@@ -10,4 +10,8 @@ const isAuthor = (sessionId, authorId) => {
   return sessionId === authorId
 }
 
-module.exports = { formatDate, isCurrentPage, isAuthor }
+const isEdited = (createdAt, updatedAt) => {
+  return createdAt.getTime() !== updatedAt.getTime()
+}
+
+module.exports = { formatDate, isCurrentPage, isAuthor, isEdited }
