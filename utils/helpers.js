@@ -10,4 +10,8 @@ const isEdited = (createdAt, updatedAt) => {
   return createdAt.getTime() !== updatedAt.getTime()
 }
 
-module.exports = { formatDate, isEqual, isEdited }
+const capitalise = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+module.exports = { formatDate, isEqual, isEdited, capitalise }
