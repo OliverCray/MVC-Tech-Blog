@@ -139,8 +139,8 @@ const updateHandler = async (typeId, type) => {
   let title, body
 
   if (type === 'post') {
-    title = document.getElementById(`new-title-${typeId}`).value.trim()
-    body = document.getElementById(`new-body-${typeId}`).value.trim()
+    title = document.getElementById(`new-post-title-${typeId}`).value.trim()
+    body = document.getElementById(`new-post-body-${typeId}`).value.trim()
   } else {
     body = document.getElementById(`new-comment-body-${typeId}`).value.trim()
   }
