@@ -15,8 +15,15 @@
     rows='4'
     id='new-{{context}}-body-{{id}}'
   >{{body}}</textarea>
-  <button
-    onclick='updateHandler({{id}}, "{{context}}")'
-    class='bg-blue-500 text-gray-100 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
-  >Update {{context}}</button>
+  <div class='button-container flex justify-between'>
+    <button
+      onclick='updateHandler({{id}}, "{{context}}")'
+      class='bg-blue-500 text-gray-100 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+    >Update {{context}}</button>
+    <button
+      type='button'
+      onclick='toggleEditing({{id}}, "{{context}}")'
+      class='bg-gray-500 text-gray-100 px-4 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 ml-2'
+    >Close</button>
+  </div>
 </form>
