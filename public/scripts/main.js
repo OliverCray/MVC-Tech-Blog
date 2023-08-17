@@ -129,13 +129,8 @@ const toggleEditing = (id, type) => {
   const editForm = document.querySelector(`#edit-${type}-form-${id}`)
   const itemContainer = document.querySelector(`.${type}-container-${id}`)
 
-  if (!editingState[id]) {
-    editForm.style.display = 'block'
-    itemContainer.style.display = 'none'
-  } else {
-    editForm.style.display = 'none'
-    itemContainer.style.display = 'block'
-  }
+  editForm.toggleAttribute('hidden')
+  itemContainer.toggleAttribute('hidden')
 
   editingState[id] = !editingState[id]
 }
