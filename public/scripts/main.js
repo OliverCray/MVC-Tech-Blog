@@ -83,7 +83,21 @@ const newPostHandler = async (event) => {
 
 const toggleMenu = (event) => {
   const menu = event.target.nextElementSibling
+  const menuToggleElement = event.target // The `:` button
   menu.classList.toggle('hidden')
+
+  // Add an event listener to close the menu when clicking outside
+  const closeMenu = (event) => {
+    const clickedElement = event.target
+
+    // Check if the clicked element is part of the menu or the menu toggle button
+    if (menu.contains(clickedElement) || clickedElement !== menuToggleElement) {
+      menu.classList.toggle('hidden')
+      document.removeEventListener('click', closeMenu)
+    }
+  }
+
+  document.addEventListener('click', closeMenu)
 }
 
 const deleteItem = async (id, confirmMessage, url, successRedirect) => {
