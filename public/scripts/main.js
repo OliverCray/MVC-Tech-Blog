@@ -130,6 +130,110 @@ const deleteCommentHandler = (commentId) => {
   deleteHandler(commentId, confirmMessage, url, successRedirect)
 }
 
+// Add a variable to track whether post editing is active
+let editingPost = false
+
+const postEdit = (postId, event) => {
+  event.preventDefault()
+
+  const editForm = document.querySelector(`#edit-post-form-${postId}`)
+  const postContainer = document.querySelector(`.post-container-${postId}`)
+
+  if (!editingPost) {
+    // Toggle to edit mode
+    editForm.style.display = 'block'
+    postContainer.style.display = 'none'
+  } else {
+    // Toggle back to display mode
+    editForm.style.display = 'none'
+    postContainer.style.display = 'block'
+  }
+
+  editingPost = !editingPost
+}
+
+const updatePostHandler = async (postId) => {
+  const title = document.getElementById(`new-title-${postId}`).value.trim()
+  const body = document.getElementById(`new-body-${postId}`).value.trim()
+
+  if (title && body) {
+    try {
+      const response = await fetch(`/api/posts/${postId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ title, body }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (response.ok) {
+        document.location.replace(`/post/${postId}`)
+      } else {
+        const responseData = await response.json()
+        alert(responseData.message || 'Failed to update post')
+      }
+    } catch (error) {
+      console.error('An error occurred:', error)
+      alert(
+        'An error occurred while trying to update a post. Please try again.'
+      )
+    }
+  }
+}
+
+let editingComment = false
+
+const commentEdit = (commentId, event) => {
+  event.preventDefault()
+
+  const editForm = document.querySelector(`#edit-comment-form-${commentId}`)
+  const commentContainer = document.querySelector(
+    `.comment-container-${commentId}`
+  )
+
+  if (!editingComment) {
+    // Toggle to edit mode
+    editForm.style.display = 'block'
+    commentContainer.style.display = 'none'
+  } else {
+    // Toggle back to display mode
+    editForm.style.display = 'none'
+    commentContainer.style.display = 'block'
+  }
+
+  editingComment = !editingComment
+}
+
+const updateCommentHandler = async (commentId) => {
+  const body = document
+    .getElementById(`new-comment-body-${commentId}`)
+    .value.trim()
+
+  if (body) {
+    try {
+      const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ body }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (response.ok) {
+        document.location.reload()
+      } else {
+        const responseData = await response.json()
+        alert(responseData.message || 'Failed to update comment')
+      }
+    } catch (error) {
+      console.error('An error occurred:', error)
+      alert(
+        'An error occurred while trying to update a comment. Please try again.'
+      )
+    }
+  }
+}
+
 if (document.URL.indexOf('dashboard') !== -1) {
   const newPostButton = document.querySelector('#new-post-button')
   const newPostForm = document.querySelector('#new-post-form')
