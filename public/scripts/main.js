@@ -86,79 +86,73 @@ const toggleMenu = (event) => {
   menu.classList.toggle('hidden')
 }
 
-const deleteItem = async (url, id, successRedirect) => {
-  try {
-    const response = await fetch(url, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    const data = await response.json()
-
-    if (response.ok) {
-      console.log(data.message)
-      if (successRedirect) {
-        document.location.replace(successRedirect)
-      }
-    } else {
-      console.error('Error deleting:', data.message)
-    }
-  } catch (error) {
-    console.error('Error deleting:', error)
-  }
-}
-
-const deleteHandler = (id, confirmMessage, url, successRedirect) => {
+const deleteItem = async (id, confirmMessage, url, successRedirect) => {
   if (confirm(confirmMessage)) {
-    deleteItem(url, id, successRedirect)
-  }
-}
-
-const deletePostHandler = (postId) => {
-  const confirmMessage = 'Are you sure you want to delete this post?'
-  const url = `/api/posts/${postId}`
-  const successRedirect = '/dashboard'
-  deleteHandler(postId, confirmMessage, url, successRedirect)
-}
-
-const deleteCommentHandler = (commentId) => {
-  const confirmMessage = 'Are you sure you want to delete this comment?'
-  const url = `/api/comments/${commentId}`
-  const successRedirect = document.URL
-  deleteHandler(commentId, confirmMessage, url, successRedirect)
-}
-
-// Add a variable to track whether post editing is active
-let editingPost = false
-
-const postEdit = (postId, event) => {
-  event.preventDefault()
-
-  const editForm = document.querySelector(`#edit-post-form-${postId}`)
-  const postContainer = document.querySelector(`.post-container-${postId}`)
-
-  if (!editingPost) {
-    // Toggle to edit mode
-    editForm.style.display = 'block'
-    postContainer.style.display = 'none'
-  } else {
-    // Toggle back to display mode
-    editForm.style.display = 'none'
-    postContainer.style.display = 'block'
-  }
-
-  editingPost = !editingPost
-}
-
-const updatePostHandler = async (postId) => {
-  const title = document.getElementById(`new-title-${postId}`).value.trim()
-  const body = document.getElementById(`new-body-${postId}`).value.trim()
-
-  if (title && body) {
     try {
-      const response = await fetch(`/api/posts/${postId}`, {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        console.log(data.message)
+        if (successRedirect) {
+          document.location.replace(successRedirect)
+        }
+      } else {
+        console.error('Error deleting:', data.message)
+      }
+    } catch (error) {
+      console.error('Error deleting:', error)
+    }
+  }
+}
+
+const deleteHandler = (id, type) => {
+  const confirmMessage =
+    type === 'post'
+      ? 'Are you sure you want to delete this post?'
+      : 'Are you sure you want to delete this comment?'
+  const url = type === 'post' ? `/api/posts/${id}` : `/api/comments/${id}`
+  const successRedirect = type === 'post' ? '/dashboard' : document.URL
+  deleteItem(id, confirmMessage, url, successRedirect)
+}
+
+// Add variable to track whether editing is active
+let editingState = {}
+
+const toggleEditing = (id, type) => {
+  const editForm = document.querySelector(`#edit-${type}-form-${id}`)
+  const itemContainer = document.querySelector(`.${type}-container-${id}`)
+
+  if (!editingState[id]) {
+    editForm.style.display = 'block'
+    itemContainer.style.display = 'none'
+  } else {
+    editForm.style.display = 'none'
+    itemContainer.style.display = 'block'
+  }
+
+  editingState[id] = !editingState[id]
+}
+
+const updateHandler = async (typeId, type) => {
+  let title, body
+
+  if (type === 'post') {
+    title = document.getElementById(`new-title-${typeId}`).value.trim()
+    body = document.getElementById(`new-body-${typeId}`).value.trim()
+  } else {
+    body = document.getElementById(`new-comment-body-${typeId}`).value.trim()
+  }
+
+  if ((type === 'post' && title) || body) {
+    try {
+      const response = await fetch(`/api/${type}s/${typeId}`, {
         method: 'PUT',
         body: JSON.stringify({ title, body }),
         headers: {
@@ -167,68 +161,17 @@ const updatePostHandler = async (postId) => {
       })
 
       if (response.ok) {
-        document.location.replace(`/post/${postId}`)
+        type === 'post'
+          ? document.location.replace(`/post/${typeId}`)
+          : document.location.reload()
       } else {
         const responseData = await response.json()
-        alert(responseData.message || 'Failed to update post')
+        alert(responseData.message || `Failed to update ${type}`)
       }
     } catch (error) {
       console.error('An error occurred:', error)
       alert(
-        'An error occurred while trying to update a post. Please try again.'
-      )
-    }
-  }
-}
-
-let editingComment = false
-
-const commentEdit = (commentId, event) => {
-  event.preventDefault()
-
-  const editForm = document.querySelector(`#edit-comment-form-${commentId}`)
-  const commentContainer = document.querySelector(
-    `.comment-container-${commentId}`
-  )
-
-  if (!editingComment) {
-    // Toggle to edit mode
-    editForm.style.display = 'block'
-    commentContainer.style.display = 'none'
-  } else {
-    // Toggle back to display mode
-    editForm.style.display = 'none'
-    commentContainer.style.display = 'block'
-  }
-
-  editingComment = !editingComment
-}
-
-const updateCommentHandler = async (commentId) => {
-  const body = document
-    .getElementById(`new-comment-body-${commentId}`)
-    .value.trim()
-
-  if (body) {
-    try {
-      const response = await fetch(`/api/comments/${commentId}`, {
-        method: 'PUT',
-        body: JSON.stringify({ body }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (response.ok) {
-        document.location.reload()
-      } else {
-        const responseData = await response.json()
-        alert(responseData.message || 'Failed to update comment')
-      }
-    } catch (error) {
-      console.error('An error occurred:', error)
-      alert(
-        'An error occurred while trying to update a comment. Please try again.'
+        `An error occurred while trying to update ${type}. Please try again.`
       )
     }
   }

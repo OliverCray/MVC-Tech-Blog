@@ -8,13 +8,13 @@
   <button
     class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'
     id='edit-{{context}}-button-{{id}}'
-    onClick='{{context}}Edit({{id}}, event)'
+    onClick='toggleEditing({{id}}, "{{context}}")'
   >Edit
     {{context}}</button>
   <button
     class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'
     id='delete-{{context}}-button'
-    onClick='{{deleteHandler}}({{id}})'
+    onClick='{{deleteHandler}}({{id}}, "{{context}}")'
   >Delete
     {{context}}</button>
 </div>
