@@ -84,7 +84,7 @@ const newPostHandler = async (event) => {
 const toggleMenu = (event) => {
   const menu = event.target.nextElementSibling
   const menuToggleElement = event.target // The `:` button
-  menu.classList.toggle('hidden')
+  menu.toggleAttribute('hidden')
 
   // Add an event listener to close the menu when clicking outside
   const closeMenu = (event) => {
@@ -92,7 +92,7 @@ const toggleMenu = (event) => {
 
     // Check if the clicked element is part of the menu or the menu toggle button
     if (menu.contains(clickedElement) || clickedElement !== menuToggleElement) {
-      menu.classList.toggle('hidden')
+      menu.toggleAttribute('hidden')
       document.removeEventListener('click', closeMenu)
     }
   }
@@ -194,16 +194,16 @@ if (document.URL.indexOf('dashboard') !== -1) {
 
   newPostButton.addEventListener('click', (event) => {
     event.preventDefault()
-    newPostForm.classList.toggle('hidden')
-    newPostButton.classList.toggle('hidden')
+    newPostForm.toggleAttribute('hidden')
+    newPostButton.toggleAttribute('hidden')
   })
 
   submitPostButton.addEventListener('click', newPostHandler)
 
   closeFormButton.addEventListener('click', (event) => {
     event.preventDefault()
-    newPostForm.classList.toggle('hidden')
-    newPostButton.classList.toggle('hidden')
+    newPostForm.toggleAttribute('hidden')
+    newPostButton.toggleAttribute('hidden')
   })
 }
 
