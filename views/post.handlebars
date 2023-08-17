@@ -9,13 +9,8 @@
         {{/if}}
       </article>
     </section>
-  
-    <form id='edit-post-form-{{id}}' hidden>
-      <input type='hidden' name='id' value='{{id}}' />
-      <input type='text' name='title' class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200 shadow-md mb-4' id="new-title-{{id}}" value='{{title}}' />
-      <textarea name='body' class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200 shadow-md mb-4' rows='4' id="new-body-{{id}}">{{body}}</textarea>
-      <button onclick='updateHandler({{id}}, "post")' class='bg-blue-500 text-gray-100 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'>Update Post</button>
-    </form>
+
+    {{>editForm context="post" id=id}}
   
     <p class='text-gray-400 flex justify-between'>
       <span>{{user.name}}</span>
@@ -58,11 +53,7 @@
           {{/if}}
         </div>
 
-        <form id='edit-comment-form-{{id}}' hidden>
-          <input type='hidden' name='id' value='{{id}}' />
-          <textarea name='body' class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200 shadow-md mb-4' rows='4' id="new-comment-body-{{id}}">{{body}}</textarea>
-          <button onclick='updateHandler({{id}}, "comment")' class='bg-blue-500 text-gray-100 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'>Update Comment</button>
-        </form>
+        {{>editForm context="comment" id=comment.id}}
 
         <p class='text-gray-400 flex justify-between'>
           <span>{{comment.user.name}}</span>

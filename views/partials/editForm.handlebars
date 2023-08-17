@@ -1,0 +1,22 @@
+<form id='edit-{{context}}-form-{{id}}' hidden>
+  <input type='hidden' name='id' value='{{id}}' />
+  {{#if (isEqual context 'post')}}
+    <input
+      type='text'
+      name='title'
+      class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200 shadow-md mb-4'
+      id='new-{{context}}-title-{{id}}'
+      value='{{title}}'
+    />
+  {{/if}}
+  <textarea
+    name='body'
+    class='w-full px-4 py-2 rounded bg-gray-700 text-gray-200 shadow-md mb-4'
+    rows='4'
+    id='new-{{context}}-body-{{id}}'
+  >{{body}}</textarea>
+  <button
+    onclick='updateHandler({{id}}, "{{context}}")'
+    class='bg-blue-500 text-gray-100 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+  >Update {{context}}</button>
+</form>

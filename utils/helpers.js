@@ -14,4 +14,8 @@ const isEdited = (createdAt, updatedAt) => {
   return createdAt.getTime() !== updatedAt.getTime()
 }
 
-module.exports = { formatDate, isCurrentPage, isAuthor, isEdited }
+const isEqual = (value1, value2) => {
+  return value1 === value2
+}
+
+module.exports = { formatDate, isCurrentPage, isAuthor, isEdited, isEqual }
