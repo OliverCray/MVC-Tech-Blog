@@ -1,5 +1,5 @@
 <div class='max-w-3xl mx-auto py-2'>
-  <h2 class='text-3xl font-semibold mb-6 text-center text-gray-200'>
+  <h2 class='text-3xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-200'>
     Welcome, {{name}}
   </h2>
 
@@ -11,40 +11,40 @@
 
   <div class='flex flex-col md:flex-row'>
     <section
-      class='bg-gray-800 rounded-lg shadow-md p-4 mb-4 md:mr-4 md:mb-0 flex-1'>
-      <h3 class='text-xl text-gray-100 mb-2'>Posts</h3>
+      class='bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md p-4 mb-4 md:mr-8 md:mb-0 flex-1'>
+      <h3 class='text-xl text-gray-900 dark:text-gray-200 mb-2 font-semibold'>Posts</h3>
       {{#if posts}}
         {{#each posts as |post|}}
           <div class='mb-2'>
-            <a href='/post/{{post.id}}' class='text-blue-500 hover:underline'>
+            <a href='/post/{{post.id}}' class='font-semibold text-indigo-500 hover:text-indigo-600 dark:text-blue-500 dark:hover:text-blue-300'>
               {{post.title}}
             </a>
           </div>
         {{/each}}
       {{else}}
-        <p class='text-gray-200'>You haven't created any posts yet.</p>
+        <p class='text-gray-900 dark:text-gray-200'>You haven't created any posts yet.</p>
       {{/if}}
     </section>
 
-    <section class='bg-gray-800 rounded-lg shadow-md p-4 flex-1'>
-      <h3 class='text-xl text-gray-100 mb-2'>Comments</h3>
+    <section class='bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md p-4 flex-1'>
+      <h3 class='text-xl text-gray-900 dark:text-gray-200 mb-2 font-semibold'>Comments</h3>
       {{#if comments}}
         {{#each comments as |comment|}}
           <div class='mb-2'>
             <p>{{comment.body}}</p>
             <p>{{formatDate comment.createdAt}}</p>
-            <p class='text-gray-200'>
+            <p class='text-gray-700 dark:text-gray-200'>
               On post:
               <a
                 href='/post/{{comment.post.id}}'
-                class='text-blue-500 hover:underline'
+                class='font-semibold text-indigo-500 hover:text-indigo-600 dark:text-blue-500 dark:hover:text-blue-300'
               >{{comment.post.title}}</a>
             </p>
           </div>
         {{/each}}
       {{else}}
         <div class='mb-2'>
-          <p class='text-gray-200'>You haven't left any comments yet.</p>
+          <p class='text-gray-900 dark:text-gray-200'>You haven't left any comments yet.</p>
         </div>
       {{/if}}
     </section>

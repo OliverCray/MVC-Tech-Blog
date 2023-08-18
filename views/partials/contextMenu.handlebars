@@ -1,19 +1,19 @@
 <button
   onclick='toggleMenu(event)'
-  class='absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 bg-gray-600 text-gray-200 rounded-full w-8 h-8 shadow-md flex items-center justify-center hover:bg-gray-700'
+  class='absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 bg-gray-300 text-gray-800 dark:bg-gray-600 dark:text-gray-200 rounded-full w-8 h-8 shadow-md flex items-center justify-center hover:bg-gray-400 dark:hover:bg-gray-700'
 >:</button>
 <div
-  class='{{context}}-menu absolute top-2 right-4 mt-2 -mr-2 bg-gray-700 rounded-lg shadow-md py-2 px-4 text-gray-200 z-10'
+  class='{{context}}-menu absolute top-2 right-4 mt-2 -mr-2 bg-gray-400 text-gray-700 dark:bg-gray-700 rounded-lg shadow-md py-2 px-4 dark:text-gray-200 z-10'
   hidden
 >
   <button
-    class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'
+    class='block w-full text-left py-1 px-2 hover:bg-gray-300 dark:hover:bg-gray-800 z-20 rounded-lg'
     id='edit-{{context}}-button-{{id}}'
     onClick='toggleEditing({{id}}, "{{context}}")'
   >Edit
     {{context}}</button>
   <button
-    class='block w-full text-left py-1 px-2 hover:bg-gray-800 z-20'
+    class='block w-full text-left py-1 px-2 hover:bg-gray-300 dark:hover:bg-gray-800 z-20 rounded-lg'
     id='delete-{{context}}-button'
     onClick='{{deleteHandler}}({{id}}, "{{context}}")'
   >Delete

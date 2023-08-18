@@ -1,25 +1,31 @@
 <button
   id='new-post-button'
-  class='bg-blue-500 text-gray-100 px-4 py-2 rounded-md shadow-md hover:bg-blue-600'
+  class='bg-indigo-500 hover:bg-indigo-600 dark:bg-blue-500 dark:hover:bg-blue-600 text-gray-100 px-4 py-2 rounded-md shadow-md'
 >
   + New Post
 </button>
 
 <form id='new-post-form' hidden>
   <div class='mb-4'>
-    <label for='post-title' class='block text-gray-300'>Title</label>
+    <label
+      for='post-title'
+      class='block text-gray-700 dark:text-gray-300'
+    >Title</label>
     <input
       type='text'
       id='post-title'
-      class='w-full rounded-md p-2 bg-gray-800 text-gray-100 shadow-sm'
+      class='w-full rounded-md p-2 bg-gray-400 text-gray-900 dark:bg-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 shadow-sm'
       placeholder='Enter a title for your post'
     />
   </div>
   <div class='mb-4'>
-    <label for='post-body' class='block text-gray-300'>Body</label>
+    <label
+      for='post-body'
+      class='block text-gray-700 dark:text-gray-300'
+    >Body</label>
     <textarea
       id='post-body'
-      class='w-full rounded-md p-2 bg-gray-800 text-gray-100 shadow-sm'
+      class='w-full rounded-md p-2 bg-gray-400 text-gray-900 dark:bg-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 shadow-sm'
       placeholder='Write the content of your post here'
       rows='5'
       cols='50'
@@ -28,13 +34,13 @@
   <div class='flex justify-between'>
     <button
       id='submit-post-button'
-      class='bg-blue-500 text-gray-100 px-4 py-2 rounded-md shadow-md hover:bg-blue-600'
+      class='bg-indigo-500 dark:bg-blue-500 hover:bg-indigo-600 dark:hover:bg-blue-600 focus:ring-indigo-400 dark:focus:ring-blue-400 text-gray-100 px-4 py-2 rounded focus:outline-none focus:ring-2'
     >
       Create Post
     </button>
     <button
       id='close-form-button'
-      class='bg-blue-500 text-gray-100 px-4 py-2 rounded-md shadow-md hover:bg-blue-600'
+      class='bg-gray-400 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded shadow-md hover:bg-gray-500 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 ml-2'
     >
       Close
     </button>
