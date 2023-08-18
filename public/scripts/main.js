@@ -141,10 +141,10 @@ let editingState = {}
 
 const toggleEditing = (id, type) => {
   const editForm = document.querySelector(`#edit-${type}-form-${id}`)
-  const itemContainer = document.querySelector(`.${type}-container-${id}`)
+  const typeContainer = document.querySelector(`.${type}-container-${id}`)
 
   editForm.toggleAttribute('hidden')
-  itemContainer.toggleAttribute('hidden')
+  typeContainer.toggleAttribute('hidden')
 
   editingState[id] = !editingState[id]
 }
