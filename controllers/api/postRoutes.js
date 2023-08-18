@@ -54,6 +54,12 @@ router.put('/:post_id', withAuth, async (req, res) => {
         .json({ message: "You don't have permission to edit this post." })
     }
 
+    if (!req.body.title || !req.body.body) {
+      return res
+        .status(400)
+        .json({ message: 'Title and body must not be blank.' })
+    }
+
     await postData.update({
       title: req.body.title,
       body: req.body.body,
