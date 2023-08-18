@@ -149,7 +149,8 @@ const toggleEditing = (id, type) => {
   editingState[id] = !editingState[id]
 }
 
-const updateHandler = async (typeId, type) => {
+const updateHandler = async (typeId, type, event) => {
+  event.preventDefault()
   let title, body
 
   if (type === 'post') {
@@ -170,9 +171,7 @@ const updateHandler = async (typeId, type) => {
       })
 
       if (response.ok) {
-        type === 'post'
-          ? document.location.replace(`/post/${typeId}`)
-          : document.location.reload()
+        document.location.reload()
       } else {
         const responseData = await response.json()
         alert(responseData.message || `Failed to update ${type}`)
