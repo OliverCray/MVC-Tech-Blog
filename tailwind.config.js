@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   mode: 'jit',
   purge: ['./views/**/*.handlebars', './public/scripts/**/*.js'],
   theme: {
@@ -15,6 +16,9 @@ module.exports = {
           200: '#ebedef',
           100: '#f2f3f5',
         },
+      },
+      screens: {
+        'xl-custom': '1440px',
       },
     },
   },
