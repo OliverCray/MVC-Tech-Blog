@@ -48,6 +48,8 @@ router.put('/:post_id', withAuth, async (req, res) => {
       return res.status(404).json({ message: 'No post found with this id!' })
     }
 
+    // Return 403 if user is not the owner of the post
+    // This is to prevent users from editing other users' posts
     if (postData.user_id !== req.session.user_id) {
       return res
         .status(403)
@@ -79,6 +81,8 @@ router.delete('/:post_id', withAuth, async (req, res) => {
       return res.status(404).json({ message: 'No post found with this id!' })
     }
 
+    // Return 403 if user is not the owner of the post
+    // This is to prevent users from deleting other users' posts
     if (postData.user_id !== req.session.user_id) {
       return res
         .status(403)

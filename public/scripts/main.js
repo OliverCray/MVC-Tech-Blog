@@ -90,7 +90,7 @@ const toggleMenu = (event) => {
   const closeMenu = (event) => {
     const clickedElement = event.target
 
-    // Check if the clicked element is part of the menu or the menu toggle button
+    // Check if the clicked element is the menu toggle button
     if (menu.contains(clickedElement) || clickedElement !== menuToggleElement) {
       menu.toggleAttribute('hidden')
       document.removeEventListener('click', closeMenu)
@@ -132,6 +132,7 @@ const deleteHandler = (id, type) => {
       ? 'Are you sure you want to delete this post?'
       : 'Are you sure you want to delete this comment?'
   const url = type === 'post' ? `/api/posts/${id}` : `/api/comments/${id}`
+  // If deleting a post, redirect to dashboard. Otherwise, redirect to current page
   const successRedirect = type === 'post' ? '/dashboard' : document.URL
   deleteItem(id, confirmMessage, url, successRedirect)
 }
@@ -143,9 +144,11 @@ const toggleEditing = (id, type) => {
   const editForm = document.querySelector(`#edit-${type}-form-${id}`)
   const typeContainer = document.querySelector(`.${type}-container-${id}`)
 
+  // If editing is active, show the edit form and hide the post/comment
   editForm.toggleAttribute('hidden')
   typeContainer.toggleAttribute('hidden')
 
+  // Update the editing state
   editingState[id] = !editingState[id]
 }
 
