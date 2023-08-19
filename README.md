@@ -12,7 +12,7 @@ Creation of a CMS-style blog site where developers can publish their blog posts 
 
 - [Usage](#usage)
 
-- [Screenshot](#demonstration-video)
+- [Screenshots](#screenshots)
 
 - [Credits](#credits)
 
@@ -78,7 +78,7 @@ To start the server, type the following command in the terminal.
 npm start
 ```
 
-To view the application, open your browser and navigate to http://localhost:3001.
+To view the application, open your browser and navigate to http://localhost:3001
 
 If you wish to run the application in development mode, type the following command in the terminal instead. This will allow you to use nodemon to automatically restart the server whenever you make changes to the code as well as rebuilding the CSS file whenever you add or change Tailwind classes.
 
@@ -90,7 +90,11 @@ npm run dev
 
 ![Screenshot of the homepage](./public/assets/images/homepage.png)
 
+![Screenshot of dark mode](./public/assets/images/dark-mode.png)
+
 ![Screenshot of the dashboard](./public/assets/images/dashboard.png)
+
+![Screenshot of the new post form](./public/assets/images/new-post.png)
 
 ![Screenshot of a post](./public/assets/images/post.png)
 
@@ -98,9 +102,9 @@ npm run dev
 
 ![Screenshot of a post being edited](./public/assets/images/edit-post.png)
 
-![Screenshot of dark mode](./public/assets/images/dark-mode.png)
+![Screenshot of a post after being edited](./public/assets/images/edited-post.png)
 
 ## Credits
 
 - [Boxicons](https://boxicons.com/)
-  - Used for the sun and moon icons in the dark mode toggle button.
+  - Used for the sun and moon icons in the dark mode toggle button
