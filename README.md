@@ -22,7 +22,7 @@ This is a full-stack web application that allows users to create an account, log
 
 When the user first visits the site, they are presented with the homepage, which displays the five most recent posts. The user can use the pagination at the bottom of the screen to navigate to additional pages to view more posts. The user can click on the title of a post to view the post and its comments. If the user is logged in, they will see a form that they can use to add comments.
 
-If the user clicks on the **Login** link in the navigation bar, they are taken to the login page, where they can enter their username and password. If the user does not have an account, they can click on the **Sign Up** link to be taken to the signup page, where they can create an account. Once the user is logged in, they will see a link to the dashboard in the nav bar. Clicking on this link will take the user to their dashboard, where they can view all of their posts and comments. Clicking on the **+ New Post** button will open a form where the user can enter a title and body for their post. After clicking the "Create Post" button, the dashboard reloads and the user can see their new post under the **Posts** section.
+If the user clicks on the **Login** link in the navigation bar, they are taken to the login page, where they can enter their username and password. If the user does not have an account, they can click on the **Sign Up** link to be taken to the signup page, where they can create an account. Once the user is logged in, they will see a link to the dashboard in the nav bar. Clicking on this link will take the user to their dashboard, where they can view all of their posts and comments. Clicking on the **+ New Post** button will open a form where the user can enter a title and body for their post. After clicking the **Create Post** button, the dashboard reloads and the user can see their new post under the **Posts** section.
 
 Upon visiting their new post, the user will see a button with a **:** icon, clicking this will open a context menu where the user can either edit or delete their post. Clicking on the **Edit Post** button will replace the post's title and body with a form containing input fields, allowing the user to edit their post. Clicking on the **Delete Post** button will delete the post and any associated comments from the database and redirect the user to their dashboard. This works similarly for comments. The user will only see the context menu next to their own posts and comments.
 
@@ -86,7 +86,7 @@ If you wish to run the application in development mode, type the following comma
 npm run dev
 ```
 
-## Screenshot
+## Screenshots
 
 ![Screenshot of the homepage](./public/assets/images/homepage.png)
 
