@@ -11,11 +11,11 @@
     id='edit-{{context}}-button-{{id}}'
     onClick='toggleEditing({{id}}, "{{context}}")'
   >Edit
-    {{context}}</button>
+    {{capitalise context}}</button>
   <button
     class='block w-full text-left py-1 px-2 hover:bg-gray-300 dark:hover:bg-gray-800 z-20 rounded-lg'
     id='delete-{{context}}-button'
     onClick='{{deleteHandler}}({{id}}, "{{context}}")'
   >Delete
-    {{context}}</button>
+    {{capitalise context}}</button>
 </div>
